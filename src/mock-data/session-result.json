@@ -1,0 +1,27 @@
+{
+  "questionId": "q1",
+  "questionText": "API latency is variable & app is sluggish, How do you design UI safely?",
+  "companyName": "PhonePe",
+  "companyLogoUrl": "https://logo.clearbit.com/phonepe.com",
+  "smartSummary": {
+    "whatWorkedWell": [
+      "Correctly explained how public/private keys enable secure data transmission.",
+      "Clearly articulated that passwords can be easily compromised without encryption.",
+      "Accurately described the handshake process as fundamental to establishing security",
+      "Demonstrated understanding of how encryption protects data integrity during transit"
+    ],
+    "overallTakeaways": [
+      "Struggled to name other security guarantees beyond confidentiality when prompted",
+      "Could not clearly differentiate between symmetric and asymmetric encryption",
+      "Needs to practice explaining complex security concepts in simpler terms",
+      "Would benefit from studying real-world examples of security implementations"
+    ]
+  },
+  "keyMoments": [
+    { "timestamp": "00:37", "description": "Correctly explained how public/private keys enable secure data transmission.", "type": "positive" },
+    { "timestamp": "01:03", "description": "Clearly articulated that passwords can be easily compromised without encryption.", "type": "positive" },
+    { "timestamp": "01:40", "description": "Accurately described the handshake process as fundamental to establishing security", "type": "positive" },
+    { "timestamp": "02:28", "description": "Struggled to name other security guarantees beyond confidentiality when prompted", "type": "negative" }
+  ],
+  "audioDurationSeconds": 312
+}

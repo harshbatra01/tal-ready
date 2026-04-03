@@ -1,0 +1,8 @@
+[
+  { "id": "1", "name": "PhonePe", "logoUrl": "https://logo.clearbit.com/phonepe.com" },
+  { "id": "2", "name": "Amazon", "logoUrl": "https://logo.clearbit.com/amazon.com" },
+  { "id": "3", "name": "Google", "logoUrl": "https://logo.clearbit.com/google.com" },
+  { "id": "4", "name": "Microsoft", "logoUrl": "https://logo.clearbit.com/microsoft.com" },
+  { "id": "5", "name": "Swiggy", "logoUrl": "https://logo.clearbit.com/swiggy.com" },
+  { "id": "6", "name": "Zomato", "logoUrl": "https://logo.clearbit.com/zomato.com" }
+]

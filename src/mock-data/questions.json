@@ -1,0 +1,42 @@
+[
+  {
+    "id": "q1",
+    "companyId": "1",
+    "status": "ready",
+    "questionText": "API latency is variable & app is sluggish, How do you design UI safely?",
+    "completedUsers": 2312,
+    "durationMins": 2
+  },
+  {
+    "id": "q2",
+    "companyId": "2",
+    "status": "ready",
+    "questionText": "Design Amazon's shopping cart system",
+    "completedUsers": 1845,
+    "durationMins": 5
+  },
+  {
+    "id": "q3",
+    "companyId": "1",
+    "status": "ready",
+    "questionText": "How would you design a rate limiter?",
+    "completedUsers": 3150,
+    "durationMins": 10
+  },
+  {
+    "id": "q4",
+    "companyId": "3",
+    "status": "locked",
+    "questionText": "Design Google Docs concurrent editing",
+    "completedUsers": 0,
+    "durationMins": 15
+  },
+  {
+    "id": "q5",
+    "companyId": "4",
+    "status": "locked",
+    "questionText": "Design Microsoft Teams presence service",
+    "completedUsers": 0,
+    "durationMins": 10
+  }
+]
