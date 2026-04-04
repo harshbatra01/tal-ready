@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import { Text } from '@/components/ui/text';
-import { Button } from '@/components/ui/button';
 import { colors, palette } from '@/theme/colors';
 import { spacing } from '@/theme/spacing';
 
@@ -17,7 +16,7 @@ export const PremiumCard = () => {
           <Text weight="bold" size={40} color={palette.white} style={styles.price}>
             ₹1
           </Text>
-          <Text size={12} color="rgba(255,255,255,0.7)">
+          <Text size={12} color={colors.premiumSubtitle}>
             Then ₹299/month
           </Text>
         </View>
@@ -45,7 +44,7 @@ export const PremiumCard = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.premiumCardBg,
     borderRadius: spacing.cardRadius,
     marginHorizontal: spacing.l,
     marginTop: spacing.m,
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     paddingTop: spacing.xs,
   },
   trialButton: {
-    backgroundColor: '#FFD033',
+    backgroundColor: colors.premiumButtonBg,
     borderRadius: spacing.buttonRadius,
     paddingVertical: spacing.s,
     paddingHorizontal: spacing.m,

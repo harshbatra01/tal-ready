@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
 import { Image } from 'expo-image';
 import { Text } from '@/components/ui/text';
@@ -6,25 +6,22 @@ import { colors, palette } from '@/theme/colors';
 import { spacing } from '@/theme/spacing';
 import type { Question, Company } from '@/types/data';
 
-// Card colors based on Figma screenshots
+// Card color map using centralized theme tokens
 const CARD_COLORS = {
-  // Card 1: green gradient with dark green bottom border
   green: {
-    background: '#C6F0B9',
-    bottomBorder: '#2E8B57',
-    numberBg: '#8DD97A',
+    background: colors.cardGreenBg,
+    bottomBorder: colors.cardGreenBorder,
+    numberBg: colors.cardGreenBadge,
   },
-  // Cards 2-3: gold/yellow with dark gold bottom border
   gold: {
-    background: '#FAE39D',
-    bottomBorder: '#C49A1A',
-    numberBg: '#FFD033', // Yellow/40 as confirmed by user
+    background: colors.cardGoldBg,
+    bottomBorder: colors.cardGoldBorder,
+    numberBg: colors.cardGoldBadge,
   },
-  // Cards 4-5: gray (locked)
   gray: {
-    background: '#E8E8EC',
-    bottomBorder: '#B0B0B8',
-    numberBg: '#D1D1D8',
+    background: colors.cardGrayBg,
+    bottomBorder: colors.cardGrayBorder,
+    numberBg: colors.cardGrayBadge,
   },
 };
 
@@ -41,7 +38,7 @@ const getCardColors = (index: number, status: string) => {
   return CARD_COLORS.gold;
 };
 
-export const QuestionCard = ({ question, company, index, onPress }: QuestionCardProps) => {
+const QuestionCardComponent = ({ question, company, index, onPress }: QuestionCardProps) => {
   const cardColors = getCardColors(index, question.status);
   const isLocked = question.status === 'locked';
 
@@ -50,6 +47,8 @@ export const QuestionCard = ({ question, company, index, onPress }: QuestionCard
       style={[styles.outerContainer, { alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end' }]}
       onPress={() => !isLocked && onPress(question)}
       disabled={isLocked}
+      accessibilityRole="button"
+      accessibilityLabel={`Question ${index + 1} by ${company?.name ?? 'Unknown'}${isLocked ? ', locked' : ''}`}
     >
       <View style={[styles.container, { backgroundColor: cardColors.background }]}>
         {/* Glossy overlay effect */}
@@ -71,7 +70,7 @@ export const QuestionCard = ({ question, company, index, onPress }: QuestionCard
           </View>
 
           <View style={[styles.numberBadge, { backgroundColor: cardColors.numberBg }]}>
-            <Text weight="bold" size={32} color={isLocked ? '#A0A0A8' : '#6B6B47'}>
+            <Text weight="bold" size={32} color={isLocked ? colors.cardNumberLockedText : colors.cardNumberText}>
               {index + 1}
             </Text>
           </View>
@@ -84,7 +83,7 @@ export const QuestionCard = ({ question, company, index, onPress }: QuestionCard
       {/* START tooltip for first unlocked card */}
       {index === 0 && !isLocked && (
         <View style={styles.startTooltip}>
-          <Text weight="bold" size={14} color="#22C55E">
+          <Text weight="bold" size={14} color={colors.success}>
             START
           </Text>
         </View>
@@ -92,6 +91,8 @@ export const QuestionCard = ({ question, company, index, onPress }: QuestionCard
     </Pressable>
   );
 };
+
+export const QuestionCard = memo(QuestionCardComponent);
 
 const styles = StyleSheet.create({
   outerContainer: {
@@ -108,8 +109,6 @@ const styles = StyleSheet.create({
   glossOverlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(255,255,255,0.15)',
-    // Simulating the diagonal gloss visible in Figma; transform isn't easily
-    // achievable in RN for this effect, so we use a subtle transparency.
   },
   contentRow: {
     flexDirection: 'row',
@@ -149,13 +148,13 @@ const styles = StyleSheet.create({
     right: -8,
     top: -12,
     backgroundColor: palette.white,
-    borderRadius: 8,
-    paddingHorizontal: 12,
+    borderRadius: spacing.xs,
+    paddingHorizontal: spacing.s,
     paddingVertical: 6,
     borderWidth: 1,
     borderColor: palette.gray30,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,

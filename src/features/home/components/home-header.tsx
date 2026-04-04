@@ -25,7 +25,12 @@ export const HomeHeader = ({ streakCount, onMenuPress }: HomeHeaderProps) => {
           </Text>
         </View>
 
-        <Pressable onPress={onMenuPress} hitSlop={8}>
+        <Pressable
+          onPress={onMenuPress}
+          hitSlop={8}
+          accessibilityRole="button"
+          accessibilityLabel="Open menu"
+        >
           <Ionicons name="menu" size={28} color={colors.textPrimary} />
         </Pressable>
       </View>
@@ -50,10 +55,10 @@ const styles = StyleSheet.create({
   streakBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#22C55E',
-    borderRadius: 20,
+    backgroundColor: colors.success,
+    borderRadius: spacing.l,
     paddingHorizontal: 10,
-    paddingVertical: 4,
-    gap: 2,
+    paddingVertical: spacing.xxs,
+    gap: spacing.xxxs,
   },
 });

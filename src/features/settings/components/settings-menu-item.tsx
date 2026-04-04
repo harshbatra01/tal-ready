@@ -21,7 +21,13 @@ export const SettingsMenuItem = ({
   onPress,
 }: SettingsMenuItemProps) => {
   return (
-    <Pressable style={styles.container} onPress={onPress} disabled={!onPress}>
+    <Pressable
+      style={styles.container}
+      onPress={onPress}
+      disabled={!onPress}
+      accessibilityRole="button"
+      accessibilityLabel={value ? `${label}: ${value}` : label}
+    >
       <View style={styles.leftSection}>
         <Ionicons name={icon} size={22} color={colors.textSecondary} />
         <Text size={16} color={colors.textPrimary} weight="normal">
@@ -40,7 +46,7 @@ export const SettingsMenuItem = ({
         )}
         {rightElement === 'download' && (
           <View style={styles.downloadIcon}>
-            <Ionicons name="download-outline" size={20} color="#22C55E" />
+            <Ionicons name="download-outline" size={20} color={colors.success} />
           </View>
         )}
       </View>
@@ -72,7 +78,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#F0FDF4',
+    backgroundColor: colors.downloadBadgeBg,
     alignItems: 'center',
     justifyContent: 'center',
   },

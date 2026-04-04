@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, StyleSheet, TextInput, Pressable, KeyboardAvoidingView, Platform, Keyboard } from 'react-native';
+import { View, StyleSheet, TextInput, Pressable, KeyboardAvoidingView, Platform, Keyboard, NativeSyntheticEvent, TextInputKeyPressEventData } from 'react-native';
 import { Text } from '@/components/ui/text';
 import { Button } from '@/components/ui/button';
 import { ScreenWrapper } from '@/components/ui/screen-wrapper';
@@ -37,7 +37,7 @@ export const LoginScreen = ({ navigation }: Props) => {
     }
   };
 
-  const handleKeyPress = (e: any, index: number) => {
+  const handleKeyPress = (e: NativeSyntheticEvent<TextInputKeyPressEventData>, index: number) => {
     if (e.nativeEvent.key === 'Backspace' && !otp[index] && index > 0) {
       otpRefs.current[index - 1]?.focus();
     }
@@ -130,7 +130,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                 </View>
               ))}
             </View>
-            <Text size={12} color={colors.textDisabled} style={{ marginTop: 8 }}>
+            <Text size={12} color={colors.textDisabled} style={{ marginTop: spacing.xs }}>
               Any number and otp works
             </Text>
           </View>

@@ -22,7 +22,7 @@ export const KeyMomentsTab = ({ moments, audioDurationSeconds }: KeyMomentsTabPr
             <Text
               weight="semibold"
               size={14}
-              color={moment.type === 'positive' ? '#22C55E' : colors.primary}
+              color={moment.type === 'positive' ? colors.success : colors.primary}
             >
               {moment.timestamp}
             </Text>

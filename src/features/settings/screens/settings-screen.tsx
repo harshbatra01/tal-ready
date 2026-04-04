@@ -8,25 +8,46 @@ import { getUser } from '@/data';
 import { colors, palette } from '@/theme/colors';
 import { spacing } from '@/theme/spacing';
 import { Ionicons } from '@expo/vector-icons';
+import type { CompositeNavigationProp } from '@react-navigation/native';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { MainTabParamList, RootStackParamList } from '@/navigation/types';
+
+type SettingsScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<MainTabParamList, 'ProgressTab'>,
+  NativeStackNavigationProp<RootStackParamList>
+>;
 
 interface Props {
-  navigation: any;
+  navigation: SettingsScreenNavigationProp;
 }
 
 export const SettingsScreen = ({ navigation }: Props) => {
   const user = getUser();
 
+  const handleLogout = () => {
+    navigation.getParent<NativeStackNavigationProp<RootStackParamList>>()?.reset({
+      index: 0,
+      routes: [{ name: 'Auth', params: { screen: 'Welcome' } }],
+    });
+  };
+
   return (
     <ScreenWrapper backgroundColor={colors.backgroundSettings}>
       {/* Header */}
       <View style={styles.header}>
-        <Pressable onPress={() => navigation.goBack()} hitSlop={8}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          hitSlop={8}
+          accessibilityRole="button"
+          accessibilityLabel="Go back"
+        >
           <Ionicons name="chevron-back" size={28} color={colors.textPrimary} />
         </Pressable>
         <Text weight="semibold" size={20} color={colors.textPrimary}>
           Your Profile
         </Text>
-        <View style={{ width: 28 }} />
+        <View style={styles.headerSpacer} />
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
@@ -78,7 +99,7 @@ export const SettingsScreen = ({ navigation }: Props) => {
           <SettingsMenuItem
             icon="log-out-outline"
             label="Log out"
-            onPress={() => {}}
+            onPress={handleLogout}
           />
         </View>
 
@@ -104,6 +125,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.m,
     paddingVertical: spacing.s,
     backgroundColor: palette.white,
+  },
+  headerSpacer: {
+    width: 28,
   },
   menuSection: {
     marginTop: spacing.m,

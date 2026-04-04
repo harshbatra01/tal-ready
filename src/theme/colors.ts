@@ -74,6 +74,34 @@ export const colors = {
   cardBackground: palette.white,
   cardBorder: palette.gray30,
 
+  // Question card palettes (from Figma)
+  cardGreenBg: "#C6F0B9",
+  cardGreenBorder: "#2E8B57",
+  cardGreenBadge: "#8DD97A",
+  cardGoldBg: "#FAE39D",
+  cardGoldBorder: "#C49A1A",
+  cardGoldBadge: "#FFD033",     // Yellow/40
+  cardGrayBg: "#E8E8EC",
+  cardGrayBorder: "#B0B0B8",
+  cardGrayBadge: "#D1D1D8",
+  cardNumberText: "#6B6B47",
+  cardNumberLockedText: "#A0A0A8",
+
+  // Bottom sheet
+  bottomSheetBg: "#FFF8E1",
+  aiButtonBg: "#806B26",
+
+  // Premium card
+  premiumCardBg: "#1A1A2E",
+  premiumButtonBg: "#FFD033",
+  premiumSubtitle: "rgba(255,255,255,0.7)",
+
+  // Download badge
+  downloadBadgeBg: "#F0FDF4",
+
+  // Shadow
+  shadow: "#000000",
+
   // Button
   buttonPrimary: palette.orange50,
   buttonPrimaryText: palette.white,

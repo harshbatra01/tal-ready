@@ -76,9 +76,16 @@ export const QuestionBottomSheet = forwardRef<BottomSheet, QuestionBottomSheetPr
               title="FEEDBACK"
               variant="outline"
               onPress={onFeedbackPress}
+              accessibilityLabel="View feedback for this question"
             />
 
-            <Pressable style={styles.aiButton} disabled>
+            <Pressable
+              style={styles.aiButton}
+              disabled
+              accessibilityRole="button"
+              accessibilityLabel="AI vs AI listen mode, coming soon"
+              accessibilityState={{ disabled: true }}
+            >
               <Ionicons name="headset" size={20} color={palette.white} />
               <Text weight="semibold" size={16} color={palette.white}>
                 AI VS AI (LISTEN)
@@ -100,9 +107,9 @@ export const QuestionBottomSheet = forwardRef<BottomSheet, QuestionBottomSheetPr
 
 const styles = StyleSheet.create({
   sheetBackground: {
-    backgroundColor: '#FFF8E1',
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
+    backgroundColor: colors.bottomSheetBg,
+    borderTopLeftRadius: spacing.xl,
+    borderTopRightRadius: spacing.xl,
   },
   handleIndicator: {
     backgroundColor: colors.textDisabled,
@@ -135,7 +142,7 @@ const styles = StyleSheet.create({
   durationTag: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    gap: spacing.xxs,
   },
   buttonsContainer: {
     gap: spacing.s,
@@ -144,8 +151,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 8,
-    backgroundColor: '#806B26',
+    gap: spacing.xs,
+    backgroundColor: colors.aiButtonBg,
     height: 52,
     borderRadius: spacing.buttonRadius,
     opacity: 0.7,

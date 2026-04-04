@@ -30,7 +30,7 @@ export const WelcomeScreen = ({ navigation }: Props) => {
           source={require('../../../../assets/images/welcome-illustration.png')}
           style={styles.illustration}
           contentFit="contain"
-          // If the local file fails to load or doesn't exist yet, we don't want it to crash, but expo-image handles that.
+          cachePolicy="memory-disk"
         />
       </View>
 
